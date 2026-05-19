@@ -38,7 +38,7 @@ Role:   Sysadmin
 ```
 ### printing variables
 
-```
+```bash
 NAME="joe"
 echo $NAME           # joe
 echo "Hello, $NAME"  # Hello, joe

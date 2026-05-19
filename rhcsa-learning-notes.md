@@ -37,19 +37,23 @@ Name:   Joe
 Role:   Sysadmin
 ```
 ### printing variables
+
+```
 NAME="joe"
 echo $NAME           # joe
 echo "Hello, $NAME"  # Hello, joe
 echo "Hello, ${NAME}man"  # Hello, joeman  
 note :  use {} to avoid confusion
+```
 
 ### single quotes vs double quotes
 "double" = variables and escapes are expanded
 'single' = everything is treated as literal text
-
+```
 NAME="joe"
 echo "$NAME"    # joe    (variable expanded)
 echo '$NAME'    # $NAME  (printed literally as it is) 
+```
 
 ### practical uses
 
@@ -77,11 +81,13 @@ printf is more powerful and predictable than echo -e. and it is more prefer in s
 ```
 printf "Name:\t%s\nRole:\t%s\n" "Joe" "Sysadmin"
 ```
+```
 display 
 Name:   Joe
 Role:   Sysadmin
 note: use echo for quick one liners in the terminal. 
 use printf inside shell scripts for consistent formatting.
+```
 ## quick echo command references 
 ```
 echo "text"                  # print to terminal

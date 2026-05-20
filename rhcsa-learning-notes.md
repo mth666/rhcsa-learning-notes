@@ -161,7 +161,15 @@ tar -xzvf backup.tar.gz path/to/file.txt
 notes: modern versions of tar (including the one in RHEL 10) are intelligence enough to auto detect the compression formats during extraction. which means flags like -z, -j, or -J could be ignore when extrating. example:
 tar -xvf any_archive.tar.xz -C /target/dir
 ```
-
+## summarized commands table
+```bash
+tar -czvf archive.tar.gz folder/    create gzip compressed
+tar -cjvf archive.tar.bz2 folder/   create bzip2 compressed
+tar -cJvf archive.tar.xz folder/    create xz compressed
+tar -xzvf archive.tar.gz            extract gzip
+tar -xzvf archive.tar.gz -C /path/  extract to specific location
+tar -tzvf archive.tar.gz            list contents without extracting
+```
 # using man pages and search inside it
 ```bash
 man tar

@@ -111,14 +111,14 @@ for that we need to use
 reducing the file size of the archive using an algorithm.
 ### decompressing: 
 restoring the compressed archive back to its original size before extraction.
-### The 3 Core Operations
+### 3 core operations
 always have to choose exactly one of these primary modes:
 ```bash
 -c : Create a new archive
 -x : Extract an existing archive
 -t : list (test) the contents of an archive without extracting
 ```
-## compression Modifiers
+## compression modifiers or compression algorithm types
 those flags tell tar which compression tool to use alongside the core operation:
 
 ```bash
@@ -128,7 +128,7 @@ those flags tell tar which compression tool to use alongside the core operation:
 ```
 ### additional flags
 ```bash
--f (f means File here): specifies the archive file name. -f flag must always be the last flag in the option block because tar expects the filename to immediately follow it.
+-f (f means File here): specifies the archive file name. -f flag must always be the last flag in the option block because tar command require the filename to immediately follows it.
 -C (C means directory here or its' from Change directory): instruct tar to switch to the target directory before doing the extration. this command is use to prevents files from unpacking into current working directory.
 ```
 ## daily commands

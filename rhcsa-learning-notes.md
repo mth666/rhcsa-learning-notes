@@ -113,9 +113,11 @@ reducing the file size of the archive using an algorithm.
 restoring the compressed archive back to its original size before extraction.
 ### The 3 Core Operations
 always have to choose exactly one of these primary modes:
+```bash
 -c : Create a new archive
 -x : Extract an existing archive
 -t : list (test) the contents of an archive without extracting
+```
 ## compression Modifiers
 those flags tell tar which compression tool to use alongside the core operation:
 
@@ -125,8 +127,10 @@ those flags tell tar which compression tool to use alongside the core operation:
 -J means xz compression type with .tar.xz extension and speed is slowest among all. 
 ```
 ### additional flags
+```bash
 -f (f means File here): specifies the archive file name. -f flag must always be the last flag in the option block because tar expects the filename to immediately follow it.
--C (C means directory here or Change Directory): instruct tar to switch to the target directory before doing the extration. this command is use to prevents files from unpacking into current working directory.
+-C (C means directory here or its' from Change directory): instruct tar to switch to the target directory before doing the extration. this command is use to prevents files from unpacking into current working directory.
+```
 ## daily commands
 ### making archives
 ```bash

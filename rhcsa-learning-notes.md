@@ -158,6 +158,6 @@ tar -xzvf backup.tar.gz -C /tmp
 # extract a single specific file from the archive
 ```bash
 tar -xzvf backup.tar.gz path/to/file.txt
-notes: modern versions of tar (including the one in RHEL 10) are smart enough to auto detect the compression formats during extraction. which means flags like -z, -j, or -J can be ignore when unpacking. example:
+notes: modern versions of tar (including the one in RHEL 10) are intelligence enough to auto detect the compression formats during extraction. which means flags like -z, -j, or -J could be ignore when extrating. example:
 tar -xvf any_archive.tar.xz -C /target/dir
 ```

@@ -191,4 +191,10 @@ exit by pressing q
 ```bash
 find /etc -type d -name "nginx"
 ```
-note : -type d restricts the search results to directories (folders) only.
+note : -type d restricts the search results to directories (folders in windows world) only.
+There are three -type values:
+```bash
+-type d    directories only
+-type f    regular files only
+-type l    symbolic links only
+```

@@ -99,6 +99,11 @@ echo $VARIABLE               # print variable value
 echo "${VAR}text"            # variable with adjacent text
 echo '$VARIABLE'             # print literally   
 ```
+### Note : 
+```bash
+instead of using touch command, empty output redirection can be use to create a file, example:
+> ~/rhcsa/labs/backup_set/system_token.txt
+```
 
 # tar command - archiving, compressing and decompressing files and directories
 
@@ -117,6 +122,7 @@ always have to choose exactly one of these primary modes:
 -c : Create a new archive
 -x : Extract an existing archive
 -t : list (test) the contents of an archive without extracting
+
 ```
 ## compression modifiers or compression algorithm types
 those flags tell tar which compression tool to use alongside the core operation:
@@ -161,7 +167,7 @@ tar -xzvf backup.tar.gz path/to/file.txt
 notes: modern versions of tar (including the one in RHEL 10) are intelligence enough to auto detect the compression formats during extraction. which means flags like -z, -j, or -J could be ignore when extrating. example:
 tar -xvf any_archive.tar.xz -C /target/dir
 ```
-## summarized commands table
+## summarized common commands
 ```bash
 tar -czvf archive.tar.gz folder/    create gzip compressed
 tar -cjvf archive.tar.bz2 folder/   create bzip2 compressed
@@ -181,3 +187,8 @@ press n to find next stuffs
 exit by pressing q
 ```
 ---
+### -type d
+```bash
+find /etc -type d -name "nginx"
+```
+note : -type d restricts the search results to directories (folders) only.

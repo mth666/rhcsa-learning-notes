@@ -198,3 +198,14 @@ There are three -type values:
 -type f    regular files only
 -type l    symbolic links only
 ```
+```bash
+find /var/log -type f -size +1M 2>/dev/null
+```
+note : +1M means greater than 1 megabytes. the + sign means greater than, - sign mean less than, and no signs mean exactly that size.
+
+```bash
+example: 
+-size +1M    greater than 1 megabyte
+-size -1M    less than 1 megabyte
+-size +100k  greater than 100 kilobytes
+```

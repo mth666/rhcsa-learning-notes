@@ -23,7 +23,7 @@ objective 11 - Systemd Timers
 6. archiving, compression and extration
 7. access documentation using man pages
 
-## objective 2 - shell scriptings
+## objective 2 - fundamental shell scriptings
 1. create and run basic shell scripts
 2. variables and user input
 3. conditionals (if, else, elif)
@@ -95,10 +95,10 @@ objective 11 - Systemd Timers
 
 ## objective 10 :flatpak
 1. what flatpak is and why it exist
-2. install and configure flatpak
+2. install and configures with flatpak
 3. add and manage flatpak repositories (remotes)
-4. install, update, and remove flatpak applications
-5. list and inspect installed flatpaks
+4. install, updates, and removes flatpak applications
+5. list and inspects installed flatpaks
 
 ## objective 11 :systemd timers
 1. understand systemd timers vs cron
@@ -131,4 +131,4 @@ objective 11 - Systemd Timers
 - use man pages with / to search, do not read the whole pages
 - tab completion prevents typos, make it habbit to use it regularly
 - skip stuck tasks and come back, do not try to waste many minutes on one task
-- always rebooting to verify before considering a task completion
+- always rebooting to verify before considering a task completion.

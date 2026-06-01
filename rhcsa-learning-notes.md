@@ -209,3 +209,14 @@ example:
 -size -1M    less than 1 megabyte
 -size +100k  greater than 100 kilobytes
 ```
+##Linux ecosystem
+```bash
+Linux automatically rotates log files to keep them manageable. old entries get moved to rotated files to older files:
+
+/var/log/messages-20260525
+
+ the current /var/log/messages only has fresh and most recent entries.
+when looking for old errors and grep returns nothing, check the rotated log files too: 
+
+sudo grep -i "failed" /var/log/messages-20260525 | grep "dnf"
+```

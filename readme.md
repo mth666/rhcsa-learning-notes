@@ -117,7 +117,7 @@ objective 11 - Systemd Timers
 - system gets rebooted after submission, everything must survive rebooting
 - systemctl enable is just as important as systemctl start
 - exact filenames and exact paths matter, no partial credits
-- one free retake if first attempt fail :)
+- one free retake if first exam taking fail :)
 - results within 3 business days (united states)
 - flatpak and systemd timers are new added in v10
 
@@ -126,9 +126,9 @@ objective 11 - Systemd Timers
 ## key exam tips & tricks
 - objectives 4 and 5 (LVM and filesystems) are common fail points
 - objective 9 (SELinux) is secondary fail points, it will blocks things silently
-- always must verify the work after every tasks
+- always verify the work after every tasks
 - always use systemctl enable not just at start
 - use man pages with / to search, do not read the whole pages
 - tab completion prevents typos, make it habbit to use it regularly
 - skip stuck tasks and come back, do not try to waste many minutes on one task
-- always rebooting to verify before considering a task completion.
+- always rebooting to verify before considering a task completion. exam itself test it all with rebooting after taking the exam 

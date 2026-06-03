@@ -224,9 +224,33 @@ sudo grep -i "failed" /var/log/messages-20260525 | grep "dnf"
 ### common grep flags and use cases
 ```bash
 grep "text" file          basic search
-grep -i "text" file       case insensitive
+grep -i "text" file       case insensitive, ignore flag
 grep -v "text" file       invert, exclude matches
-grep -c "text" file       count matching lines
+grep -c "text" file       count matching lines,
 grep -n "text" file       show line numbers
 grep -r "text" /path      search recursively
+```
+
+# Vim
+
+There are 3 modes in Vim
+Normal mode    - default mode when you open vim, for navigation
+Insert mode    - for actually typing and editing text
+Command mode   - for saving, quitting, searching
+to read a file.  vim ~/rhcsa/labs/module1/test.txt 
+press i for Insert mode
+press :wc for save and quit. (colon : switches to Command mode. w means write (save). q means quit.)
+press Esc to return to normal mode. 
+## Common Vim Commands
+```bash
+:q!          quit without saving, force exit
+:w           save but stay in vim
+dd           delete entire line
+yy           copy entire line
+p            paste
+u            undo
+gg           jump to top of file
+G            jump to bottom of file
+/word        search for word
+n            next search result
 ```

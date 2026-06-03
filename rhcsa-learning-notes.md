@@ -220,3 +220,13 @@ when looking for old errors and grep returns nothing, check the rotated log file
 
 sudo grep -i "failed" /var/log/messages-20260525 | grep "dnf"
 ```
+
+### common grep flags and use cases
+```bash
+grep "text" file          basic search
+grep -i "text" file       case insensitive
+grep -v "text" file       invert, exclude matches
+grep -c "text" file       count matching lines
+grep -n "text" file       show line numbers
+grep -r "text" /path      search recursively
+```

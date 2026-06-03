@@ -232,7 +232,7 @@ grep -r "text" /path      search recursively
 ```
 
 # Vim
-
+```bash
 There are 3 modes in Vim
 Normal mode    - default mode when you open vim, for navigation
 Insert mode    - for actually typing and editing text
@@ -241,6 +241,7 @@ to read a file.  vim ~/rhcsa/labs/module1/test.txt
 press i for Insert mode
 press :wc for save and quit. (colon : switches to Command mode. w means write (save). q means quit.)
 press Esc to return to normal mode. 
+```
 ## Common Vim Commands
 ```bash
 :q!          quit without saving, force exit

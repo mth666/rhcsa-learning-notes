@@ -239,12 +239,16 @@ Insert mode    - for actually typing and editing text
 Command mode   - for saving, quitting, searching
 to read a file.  vim ~/rhcsa/labs/module1/test.txt 
 press i for Insert mode
-press :wc for save and quit. (colon : switches to Command mode. w means write (save). q means quit.)
+press :wq for save and quit. (colon : switches to Command mode. w means write (save). q means quit.)
+type :set number to see Line numbers in Normal mode. 
 press Esc to return to normal mode. 
+To make line numbers permanent run this in the terminal:
+echo "set number" >> ~/.vimrc
+note* .vimrc is vim's personal config file in the home directory. Anything put in there loads every time vim opens.
 ```
 ## Common Vim Commands
 ```bash
-:q!          quit without saving, force exit
+:q!          quit without saving, force exit (good habit to use :q! when only to read a file.)
 :w           save but stay in vim
 dd           delete entire line
 yy           copy entire line
@@ -254,4 +258,65 @@ gg           jump to top of file
 G            jump to bottom of file
 /word        search for word
 n            next search result
+:set number  show line numbers (permanently via ~/.vimrc customizations)
+Note* : some of these commands can be combined, for example :wq (save and quit)
 ```
+Objective 1: Module 1 Complete
+# RHCSA Training Session Summary
+# Senior Engineer (Claude) + Junior Engineer (Batman/Strygwyr)
+# June 2026
+
+---
+
+# Additional notes Module 1 - Flutter SDK is set as example here
+## the environment variable mystery ($PATH)
+
+programs like ls and tar are binary files sitting inside directories like /usr/bin/. they usually locate in /usr/bin or /usr/sbin paths.
+when typing ls command in the terminal Bash does not automatically scan the entire hard drives looking for a file named "ls".
+instead, Bash relies on a single environment variable called $PATH.
+the $PATH variable is a string of directory paths separated by colons. When typing any commands, Bash reads this list from left to right and checks those specific directories for the binary. 
+if it finds it, it executes it. if it doesn't, get command not found will be output.
+If this command run in the terminal right now: 
+
+```bash
+PATH=""
+```
+the system path variable have just wiped out that lookup list for thhe current session. and at this point if we run ls. 
+the system will throw an error because it's path has been wiped out and broke its map. at this point, to run commands, the system is forced the user to type absolute path explicitly: /usr/bin/ls.
+
+### to set new PATHs for the new programs/services etc. 
+#### Method one - temporary fix (applied to current session only)
+```bash
+example : 
+export PATH="$PATH:/home/strygwyr/flutter/bin"
+```
+each commands : 
+export: this command tells Bash to make the variable available to any sub processes or tools launched from this terminal session.
+
+PATH=: setting the value of the PATH variable.
+
+"$PATH:...": by typing $PATH first, it's telling the system to look at the existing map (/usr/bin, /bin, etc.), 
+and then the colon : appends to the new directory to the very end of that list.
+important note: If forget to include $PATH and just run export PATH="/home/strygwyr/flutter/bin", this will completely wipe out current system's lookup map for that terminal window, and basic commands like ls will stop working until start the new terminal session.
+
+#### Method two - permanent fix
+to make sure Linus system remembers setting the custom system PATHs the admin must write that line into the user profile configuration file.
+the configuration file is hidden in the home directory and names as .bashrc.
+can use echo to safely append the configuration line to the bottom of the file without opening an editor:
+
+```bash
+echo 'export PATH="$PATH:/home/strygwyr/flutter/bin"' >> ~/.bashrc
+```
+
+Bash only reads the .bashrc file when a new terminal session starts.
+To force the current terminal window to read the changes immediately without logging out, source command can be use here:
+```bash
+source ~/.bashrc
+```
+verifying new settings changes are there, using 
+```bash
+echo $PATH command.
+```
+original Debian path paths, and the newly added custom Flutter directory path should be seen. 
+```
+---

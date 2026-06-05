@@ -322,12 +322,14 @@ SELinux uses labels to determine what processes can touch what files. For an Apa
 ```bash
 when command like  cp /home/batman/index.html /var/www/html/ run, the Linux kernel treats this as the creation of a brand new file inside the target directory.
 because it is a new file, it automatically inherits the SELinux context of the parent folder it was born in (/var/www/html).
-result: the file gets the correct httpd_sys_content_t label automatically. apache can read it, and the website works perfectly.
+result: the file gets the correct httpd_sys_content_t label automatically. 
+apache can read it, and the website works perfectly.
 ```
 
 ### scenario 2 - the mv command (move)
 ```bash
-when command like  mv /home/batman/index.html /var/www/html/ run, the Linux kernel does not create a new file. it simply updates the filesystem pointers to say the file now lives in a different directory. because the file itself is not recreated, it keeps its original SELinux label (user_home_t).
+when command like  mv /home/batman/index.html /var/www/html/ run, the Linux kernel does not create a new file. 
+it simply updates the filesystem pointers to say the file now lives in a different directory. because the file itself is not recreated, it keeps its original SELinux label (user_home_t).
 
 As a result
 ccenario 2 (mv) will cause a 403 Forbidden error. Apache will see a file labeled user_home_t and it will block access to protect the system because it cant read a users private home files and stuffs.
@@ -363,6 +365,127 @@ sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
 sudo firewall-cmd --reload
 ```
 ```bash
-note***: running a command with --permanent does not activate it in the runtime environment immediately. 
+explanation: running a command with --permanent does not activate it in the runtime environment immediately. 
 --permanent command must always run first and then follow it up with a --reload to push that changes into active memory.
 ```
+---
+
+## Umask
+
+`umask` (User File Creation Mode Mask) controls the default permissions for newly created files and directories.
+its a permission filter. instead of deciding permissions every time creating something, Linux automatically removes permissions based on the current umask values.
+
+### the way umask work
+Linux starts with default maximum permissions:
+#### for directories
+
+777 (rwxrwxrwx)
+
+#### for files
+
+666 (rw-rw-rw-)
+
+files do not get execute permission by default for security reasons.
+
+the umask value removes permissions from the defaults.
+
+### Common umask values
+#### umask 022
+most common default on many Linux systems.
+for files
+
+```bash
+666 - 022 = 644
+```
+result:
+
+```bash
+rw-r--r-- 
+```
+
+for directories
+
+```bash
+777 - 022 = 755
+```
+result:
+
+```bash
+rwxr-xr-x
+```
+#### umask 002
+
+common in shared environments where users belong to the same group.
+for files
+```bash
+666 - 002 = 664
+```
+result:
+```bash
+rw-rw-r--
+```
+for the directories
+
+```bash
+777 - 002 = 775
+```
+
+result:
+
+```bash
+rwxrwxr-x
+```
+
+#### umask 077
+restrictive.
+for files
+
+```bash
+666 - 077 = 600
+```
+
+result:
+
+```bash
+rw-------
+```
+
+for directories
+
+```bash
+777 - 077 = 700
+```
+result:
+```bash
+rwx------
+```
+the owner has access only.
+
+### useful umask commands
+
+checking current umask:
+
+```bash
+umask
+```
+settig a temporary umask for the current session:
+
+```bash
+umask 027
+```
+make umask permanent by adding it to:
+
+```bash
+~/.bashrc
+```
+or
+
+```bash
+~/.zshrc
+```
+main base values:
+
+for files = 666
+for directories = 777
+most umask questions will become easy after memorizing above two numbers.
+

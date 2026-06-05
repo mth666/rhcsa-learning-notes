@@ -330,7 +330,7 @@ result: the file gets the correct httpd_sys_content_t label automatically. apach
 when command like  mv /home/batman/index.html /var/www/html/ run, the Linux kernel does not create a new file. it simply updates the filesystem pointers to say the file now lives in a different directory. because the file itself is not recreated, it keeps its original SELinux label (user_home_t).
 
 As a result
-ccenario 2 (mv) will cause a 403 Forbidden error. Apache will see a file labeled user_home_t and say, "I am a web server daemon, i have no business reading a users private home files," and it will block access to protect the system.
+ccenario 2 (mv) will cause a 403 Forbidden error. Apache will see a file labeled user_home_t and it will block access to protect the system because it cant read a users private home files and stuffs.
 
 to fix this: If move a file and break the context, use the command restorecon -v /var/www/html/index.html to force the system to reset the files label back to its proper directory default.
 ```
@@ -340,20 +340,24 @@ to fix this: If move a file and break the context, use the command restorecon -v
 firewalld manages system traffic using two completely separate configurations running in parallel: Runtime and Permanent.
 how the configurations intersect
 
-Runtime: This is what actively loaded into the server's RAM right now. when running a standard command like sudo firewall-cmd --add-port=8080/tcp, it applies instantly to the RAM/memory.
+Runtime: thats what actively loaded into the servers RAM right now. when running a standard command like 
+sudo firewall-cmd --add-port=8080/tcp, 
+it applies instantly to the RAM/memory.
 
 permanent: this is a sets of XML configuration files written directly to the hard drive (inside /etc/firewalld/). 
 the system only reads these files when the firewall service starts up or reloads.
 
-Breakdowns of the scenario
+breakdowns of the scenario
 because the first command did not specify where to save the rule, it was only written to the temporary Runtime memory/RAM.
 
-When the second administrator ran sudo firewall-cmd --reload, they told the system to completely wipe out the current Runtime memory and reload the configuration from the permanent XML files on the disk. Since port 8080 was never saved to the disk, the port 8080 rule set by the current admin will completely disappears after the reload.
+when the second administrator ran sudo firewall-cmd --reload, they told the system to completely wipe out the current Runtime memory and reload the configuration from the permanent XML files on the disk. 
+and since port 8080 was never saved to the disk, the port 8080 rule set by the current admin will completely disappears after the reload.
 
 solution to fix : 
-to make a firewall rule survive reboots and reloads, --permanent flag: explicitly must add.
+to make a firewall rule survive reboots and reloads, --permanent flag: command must be add.
 ```
-Example : 
+for example : 
+
 ```bash
 sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
 sudo firewall-cmd --reload

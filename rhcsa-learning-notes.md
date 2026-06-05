@@ -315,3 +315,50 @@ echo $PATH command.
 original Debian path paths, and the newly added custom Flutter directory path should be seen. 
 
 ---
+## cp vs mv SELinux tricks
+SELinux uses labels to determine what processes can touch what files. For an Apache web server to show a webpage, that file must be labeled with a specific type, usually httpd_sys_content_t. the home directory files are labeled as user_home_t.
+ 
+### scenario 1 -  the cp command (copy)
+```bash
+when command like  cp /home/batman/index.html /var/www/html/ run, the Linux kernel treats this as the creation of a brand new file inside the target directory.
+because it is a new file, it automatically inherits the SELinux context of the parent folder it was born in (/var/www/html).
+result: the file gets the correct httpd_sys_content_t label automatically. apache can read it, and the website works perfectly.
+```
+
+### scenario 2 - the mv command (move)
+```bash
+when command like  mv /home/batman/index.html /var/www/html/ run, the Linux kernel does not create a new file. it simply updates the filesystem pointers to say the file now lives in a different directory. because the file itself is not recreated, it keeps its original SELinux label (user_home_t).
+
+As a result
+ccenario 2 (mv) will cause a 403 Forbidden error. Apache will see a file labeled user_home_t and say, "I am a web server daemon, i have no business reading a users private home files," and it will block access to protect the system.
+
+to fix this: If move a file and break the context, use the command restorecon -v /var/www/html/index.html to force the system to reset the files label back to its proper directory default.
+```
+----
+## Firewalld Runtime vs Permanent State
+```bash
+firewalld manages system traffic using two completely separate configurations running in parallel: Runtime and Permanent.
+how the configurations intersect
+
+Runtime: This is what actively loaded into the server's RAM right now. when running a standard command like sudo firewall-cmd --add-port=8080/tcp, it applies instantly to the RAM/memory.
+
+permanent: this is a sets of XML configuration files written directly to the hard drive (inside /etc/firewalld/). 
+the system only reads these files when the firewall service starts up or reloads.
+
+Breakdowns of the scenario
+because the first command did not specify where to save the rule, it was only written to the temporary Runtime memory/RAM.
+
+When the second administrator ran sudo firewall-cmd --reload, they told the system to completely wipe out the current Runtime memory and reload the configuration from the permanent XML files on the disk. Since port 8080 was never saved to the disk, the port 8080 rule set by the current admin will completely disappears after the reload.
+
+solution to fix : 
+to make a firewall rule survive reboots and reloads, --permanent flag: explicitly must add.
+```
+Example : 
+```bash
+sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+```
+```bash
+note***: running a command with --permanent does not activate it in the runtime environment immediately. 
+--permanent command must always run first and then follow it up with a --reload to push that changes into active memory.
+```

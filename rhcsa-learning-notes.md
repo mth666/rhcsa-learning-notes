@@ -261,11 +261,6 @@ n            next search result
 :set number  show line numbers (permanently via ~/.vimrc customizations)
 Note* : some of these commands can be combined, for example :wq (save and quit)
 ```
-Objective 1: Module 1 Complete
-# RHCSA Training Session Summary
-# Senior Engineer (Claude) + Junior Engineer (Batman/Strygwyr)
-# June 2026
-
 ---
 
 # Additional notes Module 1 - Flutter SDK is set as example here
@@ -318,5 +313,5 @@ verifying new settings changes are there, using
 echo $PATH command.
 ```
 original Debian path paths, and the newly added custom Flutter directory path should be seen. 
-```
+
 ---

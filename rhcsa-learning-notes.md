@@ -380,14 +380,12 @@ Linux starts with default maximum permissions:
 #### for directories
 
 777 (rwxrwxrwx)
+everyone can read, write, execute. 
 
 #### for files
 
 666 (rw-rw-rw-)
-
-files do not get execute permission by default for security reasons.
-
-the umask value removes permissions from the defaults.
+everyone can only read and write, including the onwers. 
 
 ### Common umask values
 #### umask 022
@@ -401,6 +399,7 @@ result:
 
 ```bash
 rw-r--r-- 
+(Read/Write for you, Read for others).
 ```
 
 for directories
@@ -409,9 +408,9 @@ for directories
 777 - 022 = 755
 ```
 result:
-
 ```bash
-rwxr-xr-x
+rwxr-xr-x 
+(Read/Write/Execute for you and your group, Read/Execute for others).
 ```
 #### umask 002
 
@@ -423,6 +422,7 @@ for files
 result:
 ```bash
 rw-rw-r--
+(Read/Write for you and your group, Read for others).
 ```
 for the directories
 
@@ -434,6 +434,7 @@ result:
 
 ```bash
 rwxrwxr-x
+(Read/Write/Execute for you and your group, Read/Execute for others).
 ```
 
 #### umask 077
@@ -448,6 +449,7 @@ result:
 
 ```bash
 rw-------
+(Read/Write strictly for you; no one else has access).
 ```
 
 for directories
@@ -458,6 +460,7 @@ for directories
 result:
 ```bash
 rwx------
+(Read/Write/Execute strictly for you; no one else has access).
 ```
 the owner has access only.
 
@@ -484,8 +487,9 @@ or
 ~/.zshrc
 ```
 main base values:
-
-for files = 666
-for directories = 777
+```bash
+for files = 666 (everyone can only read and write, including the onwers.)
+for directories = 777 (everyone can read, write, execute.)
+```
 most umask questions will become easy after memorizing above two numbers.
 

@@ -22,7 +22,7 @@ objective 11 - Systemd Timers
 5. input output redirection and pipes
 6. archiving, compression and extration
 7. access documentation using man pages
-
+---
 ## objective 2 - fundamental shell scriptings
 1. create and run basic shell scripts
 2. variables and user input
@@ -31,7 +31,45 @@ objective 11 - Systemd Timers
 5. functions
 6. script arguments and exit codes
 7. scheduling scripts with cron and at
+#### More Details in structed ways 
+### block 1 :shell script basics
 
+- shebang (`#!/bin/bash`)
+- script paths
+- execute permissions
+- exit codes and exit status
+learning how scripts are executed and how Linux knows what interpreter to use.
+
+### block 2 -variables and command outputs
+
+- custom variables
+- command substitution
+capturing command outputs and store them inside variables for later use cases.
+
+### block 3 - conditional logic
+
+- if
+- else
+- elif
+- test conditions using `[ ]`
+making scripts perform different actions based on conditions.
+
+### block 4 - loops
+
+- for loops
+- reading command outputs
+- processing files
+automating repetitive tasks instead of running commands manually.
+
+### block 5 - practice scenarios
+
+- mock RHCSA style tasks
+- multi-step exercises
+- troubleshooting practice
+- self verification
+combinings everything together and solve practical scripting tasks similar to real exam situations.
+
+---
 ## objective 3 -operate running systems
 1. boot targets and systemd
 2. start, stop, restart, and enable services
@@ -41,7 +79,7 @@ objective 11 - Systemd Timers
 6. manage system logs with journalctl
 7. transfer files securely between systems (scp, rsync)
 8. set system tuning profiles with tuned adm
-
+---
 ## objective 4 : configure local storage LVM
 1. lists and inspect disks and partitions
 2. create MBR and GPT partitions with fdisk and gdisk
@@ -50,7 +88,7 @@ objective 11 - Systemd Timers
 5. create and extend logical volumes (LV)
 6. reduce and remove logical volumes safely
 7. persistent storage with /etc/fstab
-
+---
 ## objective 5 :create and configure filesystems
 1. create ext4 and xfs filesystems
 2. mount and unmount filesystems manually
@@ -58,7 +96,7 @@ objective 11 - Systemd Timers
 4. create and use swap space
 5. find and use network filesystems (NFS)
 6. fonfigure autofs for automatic mountings
-
+---
 ## objective 6 - deploy & maintain systems
 1. install and update softwares with dnf
 2. enable and manage dnf repositories
@@ -66,7 +104,7 @@ objective 11 - Systemd Timers
 4. configure automatic updates
 5. manage system time and timezones
 6. basic Kickstart concepts for exam awareness
-
+---
 ## objective 7 :managing basic networking
 1. view and configure network interfaces with nmcli
 2. set static ip addresses
@@ -74,7 +112,7 @@ objective 11 - Systemd Timers
 4. test connectivity (ping, dig, traceroute)
 5. configure SSH server and client
 6. manage firewalld rules and zones
-
+---
 ## objective 8 :manage users/groups & permissions
 1. create and delete users
 2. modify user properties (shell, home, expiry)
@@ -83,7 +121,7 @@ objective 11 - Systemd Timers
 5. configure sudo access
 6. understand and use su and sudo
 7. user and group file permissions more details
-
+---
 ## objective 9 :manage security, SELinux in Redhat world
 1. understand selinux modes (enforcing, permissive, disabled)
 2. check and change selinux contexts
@@ -92,14 +130,14 @@ objective 11 - Systemd Timers
 5. read and interpret selinux audit logs
 6. configure firewalld for service access
 7. set file permissions with ACLs (getfacl, setfacl)
-
+---
 ## objective 10 :flatpak
 1. what flatpak is and why it exist
 2. install and configures with flatpak
 3. add and manage flatpak repositories (remotes)
 4. install, updates, and removes flatpak applications
 5. list and inspects installed flatpaks
-
+---
 ## objective 11 :systemd timers
 1. understand systemd timers vs cron
 2. anatomy of a timer unit file
@@ -132,3 +170,4 @@ objective 11 - Systemd Timers
 - tab completion prevents typos, make it habbit to use it regularly
 - skip stuck tasks and come back, do not try to waste many minutes on one task
 - always rebooting to verify before considering a task completion. exam itself test it all with rebooting after taking the exam 
+---

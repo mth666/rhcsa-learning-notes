@@ -1,5 +1,6 @@
 # Scripting
 The shebang line `#!/bin/bash` 
+
 first line, always. this tells the system which interpreter to use. Scripts without having it, the system doesn't know what to do with the file. it consists of a hash (#) and an exclamation point (!), followed by the absolute path to the interpreter engine.
 
 The commands - all the usual commands like `echo, find, grep, cp` all of it works the same inside a script.

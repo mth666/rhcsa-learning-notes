@@ -21,6 +21,4 @@ Every commands or script run in Linux leaves behind an invisible report card cal
 In a script, the script will automatically return the exit status of the very last command that ran inside it. declaring `exit 0` at the very bottom when a script fulfills its duties cleanly would be a good habbit.
 the variable `$?` holds the exit code of the last command that ran. example `echo $?    # prints 0 if last command succeeded, non-zero if it failed`
 
-And everything else - variables, loops, conditionals are just building on top of the above foundational things.
-
 ---

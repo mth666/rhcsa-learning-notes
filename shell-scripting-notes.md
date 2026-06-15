@@ -34,3 +34,96 @@ whoami
 exit 0
 ```
 ---
+# IF Statements
+```bash
+#!/bin/bash
+
+if [ -f /etc/passwd ]
+then
+    echo "File exists"
+fi
+```
+```bash
+#!/bin/bash
+
+if [ -f /etc/passwd ]
+then
+    echo "File exists"
+fi
+```
+### Comparing Values
+```bash
+if [ "$name" = "Morty" ] equal 
+if [ "$name" = "Morty" ] not equal
+```
+```bash
+if [ $age -gt 18 ]
+```
+
+## Common operators
+```
+-eq  equal
+-ne  not equal
+-gt  greater than
+-lt  less than
+-ge  greater/equal
+-le  less/equal
+```
+# FOR Loops
+```bash
+for user in john mary bob
+do
+    echo $user
+done
+```
+Checking multiple servers
+```bash
+for server in web01 web02 db01
+do
+    ping -c 1 $server
+done
+```
+## Process files
+```bash
+for file in *.txt
+do
+    echo $file
+done
+```
+
+# WHILE Loops
+```bash
+count=1
+
+while [ $count -le 5 ]
+do
+    echo $count
+    count=$((count+1))
+done
+```
+# Command Output
+Capturing command output -  `Capture command output:`
+using it `echo $hostname`
+example 
+```bash
+disk=$(df -h / | tail -1 | awk '{print $5}')
+
+echo $disk
+```
+# Exit Codes
+```bash
+0 = success
+non-zero = failure
+```
+```bash
+ping -c 1 google.com
+echo $?
+```
+```bash
+if ping -c 1 google.com
+then
+    echo "Network OK"
+else
+    echo "Network Down"
+fi
+```

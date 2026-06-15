@@ -162,3 +162,26 @@ else
     echo "$service stopped"
 fi
 ```
+```bash
+#!/bin/bash
+
+for user in alice bob charlie
+do
+    useradd $user
+done
+```
+
+```bash
+#!/bin/bash
+
+echo "===== HOSTNAME ====="
+hostname
+
+echo
+echo "===== MEMORY ====="
+free -h
+
+echo
+echo "===== DISK ====="
+df -h
+```

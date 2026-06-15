@@ -127,3 +127,38 @@ else
     echo "Network Down"
 fi
 ```
+# && and ||
+```bash
+if command
+then
+   echo success
+fi
+```
+is same as 
+```bash
+command && echo success
+
+example use case :  id morty && echo "User exists"
+                    id morty || echo "User missing"
+```
+# Functions
+```bash
+check_disk() {
+    df -h /
+}
+
+check_disk
+```
+examples 
+```bash
+#!/bin/bash
+
+service=sshd
+
+if systemctl is-active --quiet $service
+then
+    echo "$service running"
+else
+    echo "$service stopped"
+fi
+```

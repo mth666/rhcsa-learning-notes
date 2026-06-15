@@ -26,11 +26,11 @@ Simple example script
 ```
 #!/bin/bash
 
-# Display the current logged-in user
+# display the current logged-in user
 echo "Current Administrator:"
 whoami
 
-# Terminate the script declaring absolute success
+# terminate the script and declaring success
 exit 0
 ```
 ---

@@ -192,6 +192,6 @@ df -h
 cat /etc/shadow
 root:$y$j9T$ctXl8i82b9f3YW4tEYn0ckpJ$KVZAE1eaSsVkBoNAGkb.rVz41xWiOn9Wkg.BBuU5fh1::0:99999:7:::
 ```
-- One thing worth noticing in that shadow output is the password hashes starting with $y$ is known as `yescrypt`, the new default hashing algorithm in RHEL 10. 
+- One thing worth noticing in that shadow output is the password hashes starting with `$y$` is known as `yescrypt`, the new default hashing algorithm in RHEL 10. 
 - Older systems used `SHA-512` which starts with $6$. 
 

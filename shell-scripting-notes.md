@@ -1,18 +1,18 @@
 # Scripting
-The shebang line `#!/bin/bash` 
+## The shebang line `#!/bin/bash` 
 
 first line as always. this tells the system which interpreter to use. Scripts without having it, the system doesn't know what to do with the file. it consists of a hash (#) and an exclamation point (!), followed by the absolute path to the interpreter engine.
 
 The commands - all the usual commands like `echo, find, grep, cp` all of it works the same inside a script.
 
-Executable permission
+## Executable permission
 
 the file needs `+x` or the system refuses to run it as a program. 
 by default, when creating a new text file using vi, vim, or nano, Linux marks it as a read/write file not as a program.
 
 To make it as a script so that the system can run it, chmod must grant execution rights : `chmod +x /path/to/scripts/script.sh`
 
-Exit status codes (exit)
+## Exit status codes (exit)
 
 Every commands or script run in Linux leaves behind an invisible report card called an Exit Status (an integer between 0 and 255).
 
@@ -23,7 +23,7 @@ the variable `$?` holds the exit code of the last command that ran. example `ech
 
 Simple example script 
 
-```
+```bash
 #!/bin/bash
 
 # display the current logged-in user
@@ -32,6 +32,23 @@ whoami
 
 # terminate the script and declaring success
 exit 0
+```
+### More Examples
+```bash
+0 = success
+non-zero = failure
+```
+```bash
+ping -c 1 google.com
+echo $?
+```
+```bash
+if ping -c 1 google.com
+then
+    echo "Network OK"
+else
+    echo "Network Down"
+fi
 ```
 ---
 # IF Statements
@@ -110,23 +127,7 @@ disk=$(df -h / | tail -1 | awk '{print $5}')
 
 echo $disk
 ```
-# Exit Codes
-```bash
-0 = success
-non-zero = failure
-```
-```bash
-ping -c 1 google.com
-echo $?
-```
-```bash
-if ping -c 1 google.com
-then
-    echo "Network OK"
-else
-    echo "Network Down"
-fi
-```
+
 # && and ||
 ```bash
 if command
@@ -185,3 +186,12 @@ echo
 echo "===== DISK ====="
 df -h
 ```
+---
+# RHEL 10 vs 9 changes and updates 
+```bash
+cat /etc/shadow
+root:$y$j9T$ctXl8i82b9f3YW4tEYn0ckpJ$KVZAE1eaSsVkBoNAGkb.rVz41xWiOn9Wkg.BBuU5fh1::0:99999:7:::
+```
+- One thing worth noticing in that shadow output is the password hashes starting with $y$ is known as `yescrypt`, the new default hashing algorithm in RHEL 10. 
+- Older systems used `SHA-512` which starts with $6$. 
+

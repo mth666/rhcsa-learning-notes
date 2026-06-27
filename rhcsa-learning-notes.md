@@ -139,6 +139,7 @@ those flags tell tar which compression tool to use alongside the core operation:
 ```
 ## daily commands
 ### making archives
+
 ```bash
 tar -cvf backup.tar /path/to/source
 
@@ -492,4 +493,19 @@ for files = 666 (everyone can only read and write, including the onwers.)
 for directories = 777 (everyone can read, write, execute.)
 ```
 most umask questions will become easy after memorizing above two numbers.
+---
+#Shell Expansion
+- Shell expansion allows for more efficient command line in use. 
+- Globbing expands filenames based on wildcards, 
+```bash 
+ls *
+ls a?*
+ls [a-e]*
+```
+- Other types of expansion also exist, 
+    brace expansion : touch file {1..9}
+    tide expansion : cd~
+    command substitution : ls -l $(which ls)
+    variable substitution : echo $PATH
+    
 

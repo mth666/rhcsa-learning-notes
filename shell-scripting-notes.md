@@ -195,3 +195,9 @@ root:$y$j9T$ctXl8i82b9f3YW4tEYn0ckpJ$KVZAE1eaSsVkBoNAGkb.rVz41xWiOn9Wkg.BBuU5fh1
 - One thing worth noticing in that shadow output is the password hashes starting with `$y$` is known as `yescrypt`, the new default hashing algorithm in RHEL 10. 
 - Older systems used `SHA-512` which starts with $6$. 
 
+---
+# Normal output stdout and Error output stderr
+Throwing away normal output ```>/dev/null```
+Throwing away error output ```2>/dev/null```
+More shorter way ```>/dev/null 2>&1``` meaning throw away stdout and stderr (normal outputs and errors)
+---

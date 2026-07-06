@@ -201,3 +201,28 @@ Throwing away normal output ```>/dev/null```
 Throwing away error output ```2>/dev/null```
 More shorter way ```>/dev/null 2>&1``` meaning throw away stdout and stderr (normal outputs and errors)
 ---
+# ? is special character
+```echo $?``` means `The exit status of the last command.`
+Example 
+```bash
+mkdir test
+echo $?
+```
+Out put 0 or 
+```bash
+mkdir test
+mkdir test
+echo $?
+
+```
+Output 1
+here in this command, $ means:
+"Give me the value of the special variable ?."
+---
+## Other special characters
+`$$` = Current shell's Process ID (PID).
+Example : echo $$ might print  4521
+`$USER` = Current username.
+`$HOME` = Home directory.
+`$1` = first argument
+

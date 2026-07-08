@@ -225,4 +225,35 @@ Example : echo $$ might print  4521
 `$USER` = Current username.
 `$HOME` = Home directory.
 `$1` = first argument
+`$2` = second argument
+---
+## standard input/output/error >/dev/null and 2>$1
+- stdin  = 0 
+- stdout = 1 (Example : echo "Hello" - goes to standardoutput and return code 1)
+- stderr = 2 (Example : ls fakefile - goes to standard error output and return code 2)
+---
+# Every Linux Command Produces 3 Things
+
+- stdout = 1 (standard output or Normal output)
+- stderr = 2  (standard errors or error messages)
+- exist status = 0/1/2.. (Zero means sucess and rest are failures), could be view with `echo $?` command
+
+---
+## /dev/null
+- Everything sent here disappears and gone. 
+`echo Hello >/dev/null` output Hello would disappear and gone. 
+ '>' means redirection stdout (Normal Outputs) somewhere else. 
+ `hostname > server.txt` Instead of stdout to Terminal, it'll become stdout to server.txt file.
+ If the file doesn't exist (in this case server.txt) Linux will create it. if it exist, it'll overwrite. 
+ '>>' can be use to append to the files instead of overwriting. 
+
+ ---
+ ## 2>/dev/null
+- 1 = stdout (normal outputs)
+- 2 = stderr (error outputs)
+so `2>/dev/null` means Errors goes to trash or disappears. 
+
+---
+## >/dev/null 2>&1
+
 

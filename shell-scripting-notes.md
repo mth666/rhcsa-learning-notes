@@ -255,5 +255,74 @@ so `2>/dev/null` means Errors goes to trash or disappears.
 
 ---
 ## >/dev/null 2>&1
+`>/dev/null` means stdout to trash. 
+`2>&1` means send stderr to wherever stdout is currently going.
+basically means "Throw away everything."
+---
 
+## if - fi and case - esac (backwards)
+fi means ending block of if code block. 
+case means ending blocks of case code block. 
+## ! and $ 
+! sign means 'NOT', but not negative value as in other actual programming languages like c#, java etc. 
+example : `while ! ping -c1 server01` means While
+'server is NOT reachable Keep trying'
+
+$ sign means `Give me the value of` in bash. 
+Example : `$USER` means give me value of current username
+Example2: `$?` means give me value of exist status.
+---
+# in summary
+
+Bash = Command Orchestrator
+
+- 1 = stdout (normal output)
+- 2 = stderr (errors)
+- 0 = stdin (keyboard input)
+
+Exit Status:
+0 = Success
+!=0 = Failure
+
+>    =  Overwrite file
+>>   = Append file
+
+/dev/null = Linux Trash bin 
+
+>/dev/null
+- Throw away stdout
+
+2>/dev/null
+- Throw away stderr
+
+>/dev/null 2>&1
+- Throw away EVERYTHING
+
+`$HOME`
+- Home directory
+
+`$USER`
+- Current user
+
+`$?`
+- Last command's exit status
+
+`$1`
+- First script argument
+
+`if`
+- Did the command succeed?
+
+`fi`
+- End of if
+
+`case`
+- Multiple choices decision
+
+`esac`
+- End of case
+
+!
+ means 'NOT'
+ ---
 

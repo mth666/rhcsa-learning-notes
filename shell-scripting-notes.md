@@ -2,16 +2,20 @@
 ## The shebang line `#!/bin/bash` 
 
 first line as always. this tells the system which interpreter to use. Scripts without having it, the system doesn't know what to do with the file. it consists of a hash (#) and an exclamation point (!), followed by the absolute path to the interpreter engine.
+Essentially means, The shebang tells Linux which interpreter should execute the script. `#!/bin/bash  just means Run this script using Bash.`
+The shebang allows the script to be executed directly: `./script.sh`
+Without a shebang,usually need to specify the interpreter manually.
+- Example `bash script.sh`
 
-The commands - all the usual commands like `echo, find, grep, cp` all of it works the same inside a script.
-
+All the normal linux commands like `echo, find, grep, cp` all of it works the same inside a script.
+---
 ## Executable permission
 
 the file needs `+x` or the system refuses to run it as a program. 
 by default, when creating a new text file using vi, vim, or nano, Linux marks it as a read/write file not as a program.
 
 To make it as a script so that the system can run it, chmod must grant execution rights : `chmod +x /path/to/scripts/script.sh`
-
+---
 ## Exit status codes (exit)
 
 Every commands or script run in Linux leaves behind an invisible report card called an Exit Status (an integer between 0 and 255).
@@ -70,8 +74,8 @@ fi
 ```
 ### Comparing Values
 ```bash
-if [ "$name" = "Morty" ] equal 
-if [ "$name" = "Morty" ] not equal
+if [ "$name" = "Morty" ]   # equal
+if [ "$name" != "Morty" ]  # not equal
 ```
 ```bash
 if [ $age -gt 18 ]
@@ -209,11 +213,11 @@ mkdir test
 echo $?
 ```
 Out put 0 or 
+
 ```bash
 mkdir test
 mkdir test
 echo $?
-
 ```
 Output 1
 here in this command, $ means:
@@ -229,18 +233,18 @@ Example : echo $$ might print  4521
 ---
 ## standard input/output/error >/dev/null and 2>$1
 - stdin  = 0 
-- stdout = 1 (Example : echo "Hello" - goes to standardoutput and return code 1)
-- stderr = 2 (Example : ls fakefile - goes to standard error output and return code 2)
+- stdout = 1  (stdout is File Descriptor 1)
+- stderr = 2 
 ---
 # Every Linux Command Produces 3 Things
 
 - stdout = 1 (standard output or Normal output)
 - stderr = 2  (standard errors or error messages)
-- exist status = 0/1/2.. (Zero means sucess and rest are failures), could be view with `echo $?` command
+- exit status = 0/1/2.. (Zero means sucess and rest are failures), could be view with `echo $?` command
 
 ---
 ## /dev/null
-- Everything sent here disappears and gone. 
+- Everything sent here discarded and gone. 
 `echo Hello >/dev/null` output Hello would disappear and gone. 
  '>' means redirection stdout (Normal Outputs) somewhere else. 
  `hostname > server.txt` Instead of stdout to Terminal, it'll become stdout to server.txt file.
@@ -251,7 +255,7 @@ Example : echo $$ might print  4521
  ## 2>/dev/null
 - 1 = stdout (normal outputs)
 - 2 = stderr (error outputs)
-so `2>/dev/null` means Errors goes to trash or disappears. 
+so `2>/dev/null` means Errors discarded and gone. 
 
 ---
 ## >/dev/null 2>&1
@@ -259,10 +263,33 @@ so `2>/dev/null` means Errors goes to trash or disappears.
 `2>&1` means send stderr to wherever stdout is currently going.
 basically means "Throw away everything."
 ---
+# Order matters
+`>/dev/null`
+- Redirections happen from LEFT to RIGHT.
+- Bash processes them one at a time.
+- Every redirection changes where the pipes go.
+- The next redirection uses the NEW locations.
 
+Correct
+`command >/dev/null 2>&1`
+Wrong
+`command 2>&1 >/dev/null`
+The two commands are not the same.
+
+`>/dev/null`
+First move the normal output.
+2>&1
+Then tell the errors,
+"Follow stdout"
+- stdout goes first.
+- stderr follows stdout.
+---
+# even shorter and clearer way
+` command &>/dev/null` shorthand for `command >/dev/null 2>&1`
+---
 ## if - fi and case - esac (backwards)
 fi means ending block of if code block. 
-case means ending blocks of case code block. 
+esac means ending blocks of case code block. 
 ## ! and $ 
 ! sign means 'NOT', but not negative value as in other actual programming languages like c#, java etc. 
 example : `while ! ping -c1 server01` means While
@@ -324,5 +351,7 @@ Exit Status:
 
 !
  means 'NOT'
+
  ---
+
 

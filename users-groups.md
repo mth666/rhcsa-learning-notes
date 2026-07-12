@@ -31,3 +31,4 @@ Root can
 - install software
 
 * Root ignores almost every permission check.
+### Linux doesn't give permissions directly to users very often. It usually gives permissions to groups, then puts users into those groups.

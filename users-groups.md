@@ -1,7 +1,7 @@
 # User & Group Management
-- Three big categories in Linux system
-    - user
-    - group
+- Three big categories in Linux system, or Linux has three fundamental security concepts:
+    - users
+    - groups
     - permissions
 
 ### What is a User?

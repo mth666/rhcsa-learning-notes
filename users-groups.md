@@ -7,6 +7,7 @@
 ### What is a User?
 - A user is simply an identity.
 - Every users has IDs, Linux OS itself doens't care about names, it cares about ID, such as UID 1000, root. would be UID 0. Groups also has number (aka IDs), developers GID 1050. 
+
 Users are stored in ```/etc/passwd```
 Example : ```john:x:1000:1000:John Smit:/home/john:/bin/bash```
 * Everything about a user lives here.
@@ -32,3 +33,6 @@ Root can
 
 * Root ignores almost every permission check.
 ### Linux doesn't give permissions directly to users very often. It usually gives permissions to groups, then puts users into those groups.
+---
+# Lab-Users, Depts and permissions
+## Hospital
